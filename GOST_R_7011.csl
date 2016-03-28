@@ -33,16 +33,25 @@
 			<term name="collection-title">series</term>
 			<term form="short" name="number-of-volumes">
 				<single>vol.</single>
-				<multiple>vol.</multiple>
+				<multiple>vols.</multiple>
 			</term>
 		</terms>
 	</locale>
 	<macro name="author-first">
-		<!-- Use et-al-max=4 for type=book if it becomes avalible -->
-		<names variable="author">
-			<name delimiter=" " delimiter-precedes-last="always" et-al-min="2" et-al-use-first="1" initialize-with="." name-as-sort-order="all" sort-separator=", "/>
-			<label form="short" prefix=" " strip-periods="true" suffix="." text-case="lowercase"/>
-		</names>
+		<choose>
+			<if type="book">
+				<names variable="author">
+					<name delimiter=" " delimiter-precedes-last="always" et-al-min="2" et-al-use-first="1" initialize-with="." name-as-sort-order="all" sort-separator=", " suppress-min="4"/>
+					<label form="short" prefix=" " strip-periods="true" suffix="." text-case="lowercase"/>
+				</names>
+			</if>
+			<else>
+				<names variable="author">
+					<name delimiter=" " delimiter-precedes-last="always" et-al-min="2" et-al-use-first="1" initialize-with="." name-as-sort-order="all" sort-separator=", "/>
+					<label form="short" prefix=" " strip-periods="true" suffix="." text-case="lowercase"/>
+				</names>
+			</else>
+		</choose>
 	</macro>
 	<macro name="author-cite">
 		<names variable="author">
@@ -86,7 +95,7 @@
 					</if>
 				</choose>
 				<group delimiter=" … ">
-					<text term="thesis" form="short"/>
+					<text form="short" term="thesis"/>
 					<text variable="genre"/>
 				</group>
 			</else-if>
@@ -105,7 +114,7 @@
 		</group>
 		<choose>
 			<if type="article article-magazine article-newspaper article-journal">
-				<text prefix=". " macro="collection-title" />
+				<text macro="collection-title" prefix=". "/>
 			</if>
 		</choose>
 		<choose>
@@ -116,7 +125,7 @@
 	</macro>
 	<macro name="number-of-volumes">
 		<group delimiter=" ">
-			<text prefix=": " text-case="lowercase" term="in"/>
+			<text prefix=": " term="in" text-case="lowercase"/>
 			<text variable="number-of-volumes"/>
 			<label form="short" text-case="lowercase" variable="number-of-volumes"/>
 		</group>
@@ -195,7 +204,7 @@
 			<if variable="URL">
 				<text prefix="URL: " variable="URL"/>
 				<group delimiter=" " prefix=" (" suffix=")">
-					<text form="long" suffix=":" text-case="lowercase" term="accessed"/>
+					<text form="long" suffix=":" term="accessed" text-case="lowercase"/>
 					<date variable="accessed">
 						<date-part form="numeric-leading-zeros" name="day" suffix="."/>
 						<date-part form="numeric-leading-zeros" name="month" suffix="."/>
@@ -241,7 +250,7 @@
 		<layout delimiter="; " prefix="[" suffix="]">
 			<choose>
 				<if position="ibid">
-					<text form="short" text-case="capitalize-first" term="ibid"/>
+					<text form="short" term="ibid" text-case="capitalize-first"/>
 					<group prefix=",">
 						<label form="short" plural="never" prefix=" " variable="locator"/>
 						<text form="short" prefix=" " variable="locator"/>
