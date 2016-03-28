@@ -7,12 +7,13 @@
 			<name>Александр Севостьянов</name>
 			<email>alvslex@gmail.com</email>
 		</author>
-		<updated>2016-03-28T21:40:53+03:00</updated>
+		<updated>2016-03-28T22:26:15+03:00</updated>
 		<category citation-format="author-date"/>
 		<category field="generic-base"/>
 		<link href="http://protect.gost.ru/document.aspx?control=7&amp;id=179727" rel="documentation" xml:lang="ru"/>
 		<link href="http://chetvericov.ru/stil-oformleniya-dlya-mendeley-i-zotero-csl-po-gost-r-705-2008/" rel="template" xml:lang="ru"/>
-		<id>ITSUNIQUEBIATCH</id>
+		<link href="https://raw.githubusercontent.com/Darxor/csl-gost-r-7.0.11/master/GOST_R_7011.csl" rel="self"/>
+		<id>https://raw.githubusercontent.com/Darxor/csl-gost-r-7.0.11/master/GOST_R_7011.csl</id>
 		<summary>Стиль CSL для создания библиографических ссылок согласно ГОСТ. Полная поддержка: Журнальных статей, материалов с конференций, книг, отчетов о НИР, диссертаций (авторефератов), электронных ресурсов (WEB)</summary>
 		<rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
 	</info>
