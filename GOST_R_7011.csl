@@ -150,9 +150,10 @@
 	<macro name="publishing">
 		<choose>
 			<if is-numeric="edition">
-				<text variable="edition"/>
-				<text form="short" suffix=" " term="ordinal"/>
-				<label form="short" suffix=" – " variable="edition"/>
+				<group delimiter=" ">
+					<number form="ordinal" variable="edition"/>
+					<label form="short" suffix=" – " variable="edition"/>
+				</group>
 			</if>
 			<else>
 				<text suffix=" – " variable="edition"/>
@@ -218,9 +219,16 @@
 	<macro name="additional">
 		<choose>
 			<if type="book">
-				<group delimiter=" ">
-					<label text-case="capitalize-first" variable="collection-title"/>
-					<text prefix="«" suffix="»" variable="collection-title"/>
+				<group delimiter=", ">
+					<text variable="collection-title"/>
+					<choose>
+						<if variable="collection-number">
+							<group delimiter=" ">
+								<text form="short" term="issue" text-case="lowercase"/>
+								<text variable="collection-number"/>
+							</group>
+						</if>
+					</choose>
 				</group>
 			</if>
 		</choose>
@@ -291,7 +299,7 @@
 				<text macro="publishing" prefix="– " suffix="."/>
 				<text macro="imprint" prefix="– "/>
 				<text macro="access" prefix="– "/>
-				<text macro="additional" prefix="(" suffix=")"/>
+				<text macro="additional" prefix="– (" suffix=")"/>
 			</group>
 		</layout>
 	</bibliography>
