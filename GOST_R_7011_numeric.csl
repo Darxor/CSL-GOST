@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <style class="in-text" version="1.0" xmlns="http://purl.org/net/xbiblio/csl">
 	<info>
-		<title>ГОСТ Р 7.0.11 [Фамилия, год] Алфавитная сортировка</title>
-		<title-short>ГОСТ Р 7.0.11 [Ф,год] А-z</title-short>
+		<title>ГОСТ Р 7.0.11 [Номер] Алфавитная сортировка</title>
+		<title-short>ГОСТ Р 7.0.11 [№] А-z</title-short>
 		<author>
 			<name>Александр Севостьянов</name>
 			<email>alvslex@gmail.com</email>
 		</author>
-		<updated>2016-03-31T19:17:49+03:00</updated>
+		<updated>2016-03-31T19:34:50+03:00</updated>
 		<category citation-format="numeric"/>
 		<category field="generic-base"/>
 		<link href="http://protect.gost.ru/document.aspx?control=7&amp;id=179727" rel="documentation" xml:lang="ru"/>
