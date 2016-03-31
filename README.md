@@ -37,7 +37,7 @@
 [Wiseman, 2012]
 
 1.Мэй, Р. Смысл тревоги / Р. Мэй / пер. М.И. Завалова, А.И. Сибурина. – М.: Независимая фирма “Класс”, 2001. – 384 с. – (Библиотека психологии и психотерапии, вып. 89).
-1.Wiseman, R. The Eyes Don’t Have It: Lie Detection and Neuro-Linguistic Programming / R. Wiseman, C. Watt, L. ten Brinke, S. Porter, S.-L. Couper, C. Rankin // PLOS ONE. – 2012. – Vol. 7 – № 7 – С. e40259.
+2.Wiseman, R. The Eyes Don’t Have It: Lie Detection and Neuro-Linguistic Programming / R. Wiseman, C. Watt, L. ten Brinke, S. Porter, S.-L. Couper, C. Rankin // PLOS ONE. – 2012. – Vol. 7 – № 7 – С. e40259.
 ```
 
 ### ГОСТ Р 7.0.11 [Номер] Алфавитная сортировка
