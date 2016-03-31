@@ -7,7 +7,7 @@
  xmlns:bib="http://purl.org/net/biblio#"
  xmlns:dcterms="http://purl.org/dc/terms/"
  xmlns:prism="http://prismstandard.org/namespaces/1.2/basic/">
-    <bib:Thesis rdf:about="#item_4">
+    <bib:Thesis rdf:about="#item_77">
         <z:itemType>thesis</z:itemType>
         <dc:publisher>
             <foaf:Organization>
@@ -29,12 +29,12 @@
             </rdf:Seq>
         </bib:authors>
         <dc:date>1756</dc:date>
-        <dc:description>автореф (можно вписать любой текст в это поле,  в библиографии всё равно отобразиться «автореф.»)</dc:description>
         <z:type>д-ра эконом. наук</z:type>
+        <dcterms:abstract>автореф (можно вписать любой текст в это поле,  в библиографии всё равно отобразиться «автореф.»)</dcterms:abstract>
         <dc:title>Автореферераты в библиографии</dc:title>
         <z:numPages>50</z:numPages>
     </bib:Thesis>
-    <bib:Thesis rdf:about="#item_3">
+    <bib:Thesis rdf:about="#item_78">
         <z:itemType>thesis</z:itemType>
         <dc:publisher>
             <foaf:Organization>
@@ -60,15 +60,10 @@
         <dc:title>Особенности вноса диссертаций в библиографию</dc:title>
         <z:numPages>369</z:numPages>
     </bib:Thesis>
-    <rdf:Description rdf:about="#item_71">
+    <rdf:Description rdf:about="#item_79">
         <z:itemType>conferencePaper</z:itemType>
         <dcterms:isPartOf>
             <bib:Journal>
-                <dcterms:isPartOf>
-                    <bib:Series>
-                       <dc:title>Психология, педагоника</dc:title>
-                    </bib:Series>
-                </dcterms:isPartOf>
                 <prism:volume>2</prism:volume>
                 <dc:title>материалы конференции</dc:title>
             </bib:Journal>
@@ -118,7 +113,7 @@
         </bib:presentedAt>
         <dc:title>Документ конференции</dc:title>
     </rdf:Description>
-    <bib:Book rdf:about="#item_72">
+    <bib:Book rdf:about="#item_80">
         <z:itemType>book</z:itemType>
         <dc:publisher>
             <foaf:Organization>
@@ -165,7 +160,7 @@
         <dc:title>Книга четырех</dc:title>
         <z:numPages>3</z:numPages>
     </bib:Book>
-    <bib:Book rdf:about="#item_73">
+    <bib:Book rdf:about="#item_81">
         <z:itemType>book</z:itemType>
         <dcterms:isPartOf>
            <bib:Series><dc:title>Мастера книгоделания</dc:title></bib:Series>
@@ -208,7 +203,7 @@
         <z:numberOfVolumes>6</z:numberOfVolumes>
         <dc:title>Книга трех</dc:title>
     </bib:Book>
-    <bib:Book rdf:about="#item_70">
+    <bib:Book rdf:about="#item_82">
         <z:itemType>book</z:itemType>
         <dcterms:isPartOf>
            <bib:Series><dc:title>Мастера книгоделания</dc:title></bib:Series>
@@ -266,17 +261,11 @@
         <dc:title>Книга</dc:title>
         <z:numPages>99</z:numPages>
     </bib:Book>
-    <bib:BookSection rdf:about="#item_2">
+    <bib:BookSection rdf:about="#item_83">
         <z:itemType>bookSection</z:itemType>
         <dcterms:isPartOf>
             <bib:Book>
-                <dcterms:isPartOf>
-                    <bib:Series>
-                       <dc:title>Мастера книгоделания</dc:title>
-                    </bib:Series>
-                </dcterms:isPartOf>
-                <prism:volume>2</prism:volume>
-                <dc:title>Книга трех</dc:title>
+               <prism:volume>2</prism:volume><dc:title>Книга трех</dc:title>
             </bib:Book>
         </dcterms:isPartOf>
         <dc:publisher>
@@ -327,16 +316,10 @@
         <z:numberOfVolumes>6</z:numberOfVolumes>
         <dc:title>Раздел второго</dc:title>
     </bib:BookSection>
-    <rdf:Description rdf:about="#item_5">
+    <rdf:Description rdf:about="#item_84">
         <z:itemType>dictionaryEntry</z:itemType>
         <dcterms:isPartOf>
             <bib:Book>
-                <dcterms:isPartOf>
-                    <bib:Series>
-                        <dc:title>словарные работы</dc:title>
-                        <dc:identifier>3</dc:identifier>
-                    </bib:Series>
-                </dcterms:isPartOf>
                 <prism:volume>15</prism:volume>
                 <dc:title>Немаленький энциклопедический словарь</dc:title>
             </bib:Book>
@@ -373,15 +356,10 @@
         <z:numberOfVolumes>100</z:numberOfVolumes>
         <dc:title>Словарная статья</dc:title>
     </rdf:Description>
-    <bib:Article rdf:about="#item_69">
+    <bib:Article rdf:about="#item_85">
         <z:itemType>journalArticle</z:itemType>
         <dcterms:isPartOf>
             <bib:Journal>
-                <dcterms:isPartOf>
-                    <bib:Series>
-                        <dcterms:alternative>Психология, педагогика</dcterms:alternative>
-                    </bib:Series>
-                </dcterms:isPartOf>
                 <prism:volume>3</prism:volume>
                 <prism:number>1</prism:number>
                 <dc:title>Журнал современной периодики</dc:title>
@@ -407,16 +385,40 @@
         <dc:date>2015</dc:date>
         <dc:title>Статья из периодики</dc:title>
     </bib:Article>
-    <rdf:Description rdf:about="#item_1">
+    <bib:Article rdf:about="#item_87">
+        <z:itemType>journalArticle</z:itemType>
+        <dcterms:isPartOf>
+            <bib:Journal>
+                <prism:volume>2</prism:volume>
+                <prism:number>3</prism:number>
+                <dc:title>Journal of Nothing</dc:title>
+            </bib:Journal>
+        </dcterms:isPartOf>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>First</foaf:surname>
+                        <foaf:givenname>A.</foaf:givenname>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Second</foaf:surname>
+                        <foaf:givenname>B.</foaf:givenname>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <bib:pages>15-25</bib:pages>
+        <dc:date>2015</dc:date>
+        <z:language>en</z:language>
+        <dc:title>Periodic paper</dc:title>
+    </bib:Article>
+    <rdf:Description rdf:about="#item_86">
         <z:itemType>encyclopediaArticle</z:itemType>
         <dcterms:isPartOf>
             <bib:Book>
-                <dcterms:isPartOf>
-                    <bib:Series>
-                        <dc:title>энциклопедии</dc:title>
-                        <dc:identifier>3</dc:identifier>
-                    </bib:Series>
-                </dcterms:isPartOf>
                 <prism:volume>15</prism:volume>
                 <dc:title>Большая общая энциклопедия</dc:title>
             </bib:Book>
