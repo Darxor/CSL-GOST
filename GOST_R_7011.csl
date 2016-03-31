@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<style class="in-text" version="1.0" xmlns="http://purl.org/net/xbiblio/csl">
+<style class="in-text" default-locale-sort="ru-RU" version="1.0" xmlns="http://purl.org/net/xbiblio/csl">
 	<info>
 		<title>ГОСТ Р 7.0.11 [Фамилия, год] Алфавитная сортировка</title>
 		<title-short>ГОСТ Р 7.0.11 [Ф,год] А-z</title-short>
@@ -7,7 +7,7 @@
 			<name>Александр Севостьянов</name>
 			<email>alvslex@gmail.com</email>
 		</author>
-		<updated>2016-03-31T19:17:49+03:00</updated>
+		<updated>2016-03-31T20:32:01+03:00</updated>
 		<category citation-format="author-date"/>
 		<category field="generic-base"/>
 		<link href="http://protect.gost.ru/document.aspx?control=7&amp;id=179727" rel="documentation" xml:lang="ru"/>
@@ -252,6 +252,25 @@
 			</if>
 		</choose>
 	</macro>
+	<macro name="bibliography">
+		<group delimiter=" ">
+			<group delimiter=" " suffix=".">
+				<choose>
+					<if match="none" type="webpage report">
+						<text macro="author-first"/>
+					</if>
+				</choose>
+				<text macro="title"/>
+				<text macro="authors-all" prefix="/ "/>
+				<text macro="container" prefix=" // " suffix="."/>
+				<text macro="container-contributors" prefix="/ "/>
+			</group>
+			<text macro="publishing" prefix="– " suffix="."/>
+			<text macro="imprint" prefix="– "/>
+			<text macro="access" prefix="– "/>
+			<text macro="additional" prefix="– (" suffix=")"/>
+		</group>
+	</macro>
 	<citation disambiguate-add-year-suffix="true" et-al-min="2" et-al-use-first="1">
 		<sort>
 			<key variable="citation-number"/>
@@ -270,7 +289,7 @@
 					<text macro="year-date" prefix=", "/>
 					<group prefix=",">
 						<label form="short" plural="never" prefix=" " variable="locator"/>
-						<text form="short" prefix=" " variable="locator"/>
+						<text form="short" variable="locator"/>
 					</group>
 				</else>
 			</choose>
@@ -278,29 +297,21 @@
 	</citation>
 	<bibliography second-field-align="flush">
 		<sort>
-			<key macro="language-sort"/>
+			<!-- <key macro="language-sort"/>-->
 			<key macro="author-cite"/>
 			<key variable="issued"/>
 		</sort>
+		<layout locale="ru" suffix=".">
+			<text suffix="." variable="citation-number"/>
+			<text macro="bibliography"/>
+		</layout>
+		<layout locale="en de es fr it" suffix=".">
+			<text suffix="." variable="citation-number"/>
+			<text macro="bibliography"/>
+		</layout>
 		<layout suffix=".">
 			<text suffix="." variable="citation-number"/>
-			<group delimiter=" ">
-				<group delimiter=" " suffix=".">
-					<choose>
-						<if match="none" type="webpage report">
-							<text macro="author-first"/>
-						</if>
-					</choose>
-					<text macro="title"/>
-					<text macro="authors-all" prefix="/ "/>
-					<text macro="container" prefix=" // " suffix="."/>
-					<text macro="container-contributors" prefix="/ "/>
-				</group>
-				<text macro="publishing" prefix="– " suffix="."/>
-				<text macro="imprint" prefix="– "/>
-				<text macro="access" prefix="– "/>
-				<text macro="additional" prefix="– (" suffix=")"/>
-			</group>
+			<text macro="bibliography"/>
 		</layout>
 	</bibliography>
 </style>
