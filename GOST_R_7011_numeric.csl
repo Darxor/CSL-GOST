@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<style class="in-text" version="1.0" xmlns="http://purl.org/net/xbiblio/csl">
+	<info>
+		<title>ГОСТ Р 7.0.11 [Фамилия, год] Алфавитная сортировка</title>
+		<title-short>ГОСТ Р 7.0.11 [Ф,год] А-z</title-short>
+		<author>
+			<name>Александр Севостьянов</name>
+			<email>alvslex@gmail.com</email>
+		</author>
+		<updated>2016-03-31T19:17:49+03:00</updated>
+		<category citation-format="numeric"/>
+		<category field="generic-base"/>
+		<link href="http://protect.gost.ru/document.aspx?control=7&amp;id=179727" rel="documentation" xml:lang="ru"/>
+		<link href="http://chetvericov.ru/stil-oformleniya-dlya-mendeley-i-zotero-csl-po-gost-r-705-2008/" rel="template" xml:lang="ru"/>
+		<link href="https://raw.githubusercontent.com/Darxor/csl-gost-r-7.0.11/master/GOST_R_7011-numeric.csl" rel="self"/>
+		<id>https://raw.githubusercontent.com/Darxor/csl-gost-r-7.0.11/master/GOST_R_7011-numeric.csl</id>
+		<summary>Стиль CSL для создания библиографических ссылок согласно ГОСТ. Полная поддержка: Журнальных статей, материалов с конференций, книг, отчетов о НИР, диссертаций (авторефератов), электронных ресурсов (WEB)</summary>
+		<rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+	</info>
+	<locale xml:lang="ru">
+		<terms>
+			<term name="et-al"/>
+			<term form="symbol" name="issue">№</term>
+			<term name="accessed">дата обращения</term>
+			<term name="collection-title">серия</term>
+			<term form="short" name="number-of-volumes">т.</term>
+			<term form="short" name="thesis">дис.</term>
+		</terms>
+	</locale>
+	<locale xml:lang="en">
+		<terms>
+			<term name="et-al"/>
+			<term form="symbol" name="issue">№</term>
+			<term name="collection-title">series</term>
+			<term form="short" name="number-of-volumes">
+				<single>vol.</single>
+				<multiple>vols.</multiple>
+			</term>
+		</terms>
+	</locale>
+	<macro name="author-first">
+		<choose>
+			<if type="book">
+				<names variable="author">
+					<name delimiter=" " delimiter-precedes-last="always" et-al-min="2" et-al-use-first="1" initialize-with="." name-as-sort-order="all" sort-separator=", " suppress-min="4"/>
+					<label form="short" prefix=" " strip-periods="true" suffix="." text-case="lowercase"/>
+				</names>
+			</if>
+			<else>
+				<names variable="author">
+					<name delimiter=" " delimiter-precedes-last="always" et-al-min="2" et-al-use-first="1" initialize-with="." name-as-sort-order="all" sort-separator=", "/>
+					<label form="short" prefix=" " strip-periods="true" suffix="." text-case="lowercase"/>
+				</names>
+			</else>
+		</choose>
+	</macro>
+	<macro name="author-cite">
+		<names variable="author">
+			<name delimiter=", " delimiter-precedes-last="always" form="short" name-as-sort-order="all" sort-separator=" "/>
+			<substitute>
+				<choose>
+					<if type="webpage">
+						<text variable="title"/>
+						<text variable="container-title"/>
+					</if>
+					<else>
+						<text variable="title"/>
+					</else>
+				</choose>
+			</substitute>
+		</names>
+	</macro>
+	<macro name="title">
+		<text variable="title"/>
+		<text macro="genre" prefix=": "/>
+		<choose>
+			<if match="none" variable="container-title">
+				<text macro="number-of-volumes"/>
+			</if>
+		</choose>
+		<choose>
+			<if match="all" type="webpage" variable="URL">
+				<text value=" [Электронный ресурс]. "/>
+			</if>
+		</choose>
+	</macro>
+	<macro name="genre">
+		<choose>
+			<if type="report">
+				<text variable="genre"/>
+			</if>
+			<else-if type="thesis">
+				<choose>
+					<if variable="note">
+						<text value="автореф. "/>
+					</if>
+				</choose>
+				<group delimiter=" … ">
+					<text form="short" term="thesis"/>
+					<text variable="genre"/>
+				</group>
+			</else-if>
+		</choose>
+	</macro>
+	<macro name="authors-all">
+		<names delimiter=", " variable="author">
+			<name delimiter=", " initialize-with="."/>
+			<label form="short" prefix=", " text-case="capitalize-first"/>
+		</names>
+	</macro>
+	<macro name="container">
+		<group delimiter=": ">
+			<text variable="event"/>
+			<text form="long" variable="container-title"/>
+		</group>
+		<choose>
+			<if type="article article-magazine article-newspaper article-journal">
+				<text macro="collection-title" prefix=". "/>
+			</if>
+		</choose>
+		<choose>
+			<if variable="container-title">
+				<text macro="number-of-volumes"/>
+			</if>
+		</choose>
+	</macro>
+	<macro name="number-of-volumes">
+		<group delimiter=" ">
+			<text prefix=": " term="in" text-case="lowercase"/>
+			<text variable="number-of-volumes"/>
+			<label form="short" text-case="lowercase" variable="number-of-volumes"/>
+		</group>
+	</macro>
+	<macro name="container-contributors">
+		<group delimiter="; ">
+			<names delimiter=", " variable="container-author">
+				<label form="verb-short" suffix=" " text-case="title"/>
+				<name delimiter=", " initialize-with="." sort-separator=", "/>
+			</names>
+			<names delimiter=", " variable="editor">
+				<label form="verb-short" suffix=" " text-case="title"/>
+				<name delimiter=", " initialize-with="." sort-separator=", "/>
+			</names>
+			<names delimiter=", " variable="translator">
+				<label form="verb-short" suffix=" " text-case="title"/>
+				<name delimiter=", " initialize-with="." sort-separator=", "/>
+			</names>
+		</group>
+	</macro>
+	<macro name="publishing">
+		<choose>
+			<if is-numeric="edition">
+				<group delimiter=" ">
+					<number form="ordinal" variable="edition"/>
+					<label form="short" suffix=" – " variable="edition"/>
+				</group>
+			</if>
+			<else>
+				<text suffix=" – " variable="edition"/>
+			</else>
+		</choose>
+		<choose>
+			<if match="any" variable="publisher publisher-place">
+				<group delimiter=": ">
+					<text form="short" variable="publisher-place"/>
+					<choose>
+						<if match="none" type="thesis">
+							<text variable="publisher"/>
+						</if>
+					</choose>
+				</group>
+				<text macro="year-date" prefix=", "/>
+			</if>
+			<else>
+				<text macro="year-date"/>
+			</else>
+		</choose>
+	</macro>
+	<macro name="year-date">
+		<date variable="issued">
+			<date-part name="year"/>
+		</date>
+	</macro>
+	<macro name="imprint">
+		<group delimiter=" – ">
+			<group delimiter=" ">
+				<label form="short" plural="never" text-case="capitalize-first" variable="volume"/>
+				<text variable="volume"/>
+			</group>
+			<group delimiter=" ">
+				<label form="symbol" plural="never" text-case="capitalize-first" variable="issue"/>
+				<text variable="issue"/>
+			</group>
+			<group delimiter=" ">
+				<label form="short" plural="never" text-case="capitalize-first" variable="page"/>
+				<text variable="page"/>
+			</group>
+			<group delimiter=" ">
+				<text variable="number-of-pages"/>
+				<label form="short" plural="never" text-case="lowercase" variable="number-of-pages"/>
+			</group>
+		</group>
+	</macro>
+	<macro name="access">
+		<choose>
+			<if variable="URL">
+				<text prefix="URL: " variable="URL"/>
+				<group delimiter=" " prefix=" (" suffix=")">
+					<text form="long" suffix=":" term="accessed" text-case="lowercase"/>
+					<date variable="accessed">
+						<date-part form="numeric-leading-zeros" name="day" suffix="."/>
+						<date-part form="numeric-leading-zeros" name="month" suffix="."/>
+						<date-part name="year"/>
+					</date>
+				</group>
+			</if>
+		</choose>
+	</macro>
+	<macro name="additional">
+		<choose>
+			<if type="book">
+				<group delimiter=", ">
+					<text variable="collection-title"/>
+					<choose>
+						<if variable="collection-number">
+							<group delimiter=" ">
+								<text form="short" term="issue" text-case="lowercase"/>
+								<text variable="collection-number"/>
+							</group>
+						</if>
+					</choose>
+				</group>
+			</if>
+		</choose>
+	</macro>
+	<macro name="collection-title">
+		<label suffix=": " text-case="capitalize-first" variable="collection-title"/>
+		<group delimiter=", ">
+			<!-- Zotero is glitchy as of March 2016, and puts both "collection number" and "collection title" to collection-title variable, with second overwriting the first -->
+			<text variable="collection-number"/>
+			<text variable="collection-title"/>
+		</group>
+	</macro>
+	<!--
+			Sorts russian entries before any otheres (language is defined by wether or not "language" ("язык") field is filled in)
+			NB!: Do not fill it in for russian
+		-->
+	<macro name="language-sort">
+		<choose>
+			<if match="none" variable="language">
+				<text value="ZZZZZZZ"/>
+			</if>
+		</choose>
+	</macro>
+	<citation disambiguate-add-year-suffix="false" et-al-min="2" et-al-use-first="1">
+		<sort>
+			<key variable="citation-number"/>
+		</sort>
+		<layout delimiter="; " prefix="[" suffix="]">
+			<text variable="citation-number"/>
+			<group prefix=",">
+				<label form="short" plural="never" prefix=" " variable="locator"/>
+				<text form="short" variable="locator"/>
+			</group>
+		</layout>
+	</citation>
+	<bibliography second-field-align="flush">
+		<sort>
+			<key macro="language-sort"/>
+			<key macro="author-cite"/>
+			<key variable="issued"/>
+		</sort>
+		<layout suffix=".">
+			<text suffix="." variable="citation-number"/>
+			<group delimiter=" ">
+				<group delimiter=" " suffix=".">
+					<choose>
+						<if match="none" type="webpage report">
+							<text macro="author-first"/>
+						</if>
+					</choose>
+					<text macro="title"/>
+					<text macro="authors-all" prefix="/ "/>
+					<text macro="container" prefix=" // " suffix="."/>
+					<text macro="container-contributors" prefix="/ "/>
+				</group>
+				<text macro="publishing" prefix="– " suffix="."/>
+				<text macro="imprint" prefix="– "/>
+				<text macro="access" prefix="– "/>
+				<text macro="additional" prefix="– (" suffix=")"/>
+			</group>
+		</layout>
+	</bibliography>
+</style>
