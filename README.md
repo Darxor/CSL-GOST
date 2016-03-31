@@ -40,7 +40,7 @@
 ```
 
 ### ГОСТ Р 7.0.11 [Номер] Алфавитная сортировка
-#### [GOST_R_7011-numeric.csl](https://raw.githubusercontent.com/Darxor/csl-gost-r-7.0.11/master/GOST_R_7011-numeric.csl)
+#### [GOST_R_7011_numeric.csl](https://raw.githubusercontent.com/Darxor/csl-gost-r-7.0.11/master/GOST_R_7011_numeric.csl)
 Цитирование в формате [Номер-цитаты], алфавитная сортировка (англоязычные материалы размещаются внизу списка)
 
 ```
