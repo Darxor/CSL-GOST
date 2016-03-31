@@ -7,7 +7,7 @@
 			<name>Александр Севостьянов</name>
 			<email>alvslex@gmail.com</email>
 		</author>
-		<updated>2016-03-28T22:26:15+03:00</updated>
+		<updated>2016-03-31T19:17:49+03:00</updated>
 		<category citation-format="author-date"/>
 		<category field="generic-base"/>
 		<link href="http://protect.gost.ru/document.aspx?control=7&amp;id=179727" rel="documentation" xml:lang="ru"/>
@@ -262,7 +262,7 @@
 					<text form="short" term="ibid" text-case="capitalize-first"/>
 					<group prefix=",">
 						<label form="short" plural="never" prefix=" " variable="locator"/>
-						<text form="short" prefix=" " variable="locator"/>
+						<text form="short" variable="locator"/>
 					</group>
 				</if>
 				<else>
