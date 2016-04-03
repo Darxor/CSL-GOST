@@ -7,7 +7,7 @@
 			<name>Александр Севостьянов</name>
 			<email>alvslex@gmail.com</email>
 		</author>
-		<updated>2016-03-31T21:27:18+03:00</updated>
+		<updated>2016-04-03T17:27:12+03:00</updated>
 		<category citation-format="author-date"/>
 		<category field="generic-base"/>
 		<link href="http://protect.gost.ru/document.aspx?control=7&amp;id=179727" rel="documentation" xml:lang="ru"/>
@@ -55,20 +55,32 @@
 		</choose>
 	</macro>
 	<macro name="author-cite">
-		<names variable="author">
-			<name delimiter=", " delimiter-precedes-last="always" form="short" name-as-sort-order="all" sort-separator=" "/>
-			<substitute>
-				<choose>
-					<if type="webpage">
-						<text variable="title"/>
-						<text variable="container-title"/>
-					</if>
-					<else>
-						<text variable="title"/>
-					</else>
-				</choose>
-			</substitute>
-		</names>
+		<choose>
+			<if type="book">
+				<names variable="author">
+					<name delimiter=", " delimiter-precedes-last="always" et-al-min="2" et-al-use-first="1" form="short" name-as-sort-order="all" sort-separator=" " suppress-min="4"/>
+					<substitute>
+						<text form="short" variable="title"/>
+					</substitute>
+				</names>
+			</if>
+			<else>
+				<names variable="author">
+					<name delimiter=", " delimiter-precedes-last="always" et-al-min="2" et-al-use-first="1" form="short" name-as-sort-order="all" sort-separator=" "/>
+					<substitute>
+						<choose>
+							<if type="webpage">
+								<text variable="title"/>
+								<text variable="container-title"/>
+							</if>
+							<else>
+								<text form="short" variable="title"/>
+							</else>
+						</choose>
+					</substitute>
+				</names>
+			</else>
+		</choose>
 	</macro>
 	<macro name="title">
 		<text variable="title"/>
@@ -79,9 +91,12 @@
 			</if>
 		</choose>
 		<choose>
-			<if match="all" type="webpage" variable="URL">
+			<if type="webpage">
 				<text value=" [Электронный ресурс]. "/>
 			</if>
+			<else-if match="all" variable="URL accessed">
+				<text value=" [Электронный ресурс]. "/>
+			</else-if>
 		</choose>
 	</macro>
 	<macro name="genre">
@@ -203,7 +218,10 @@
 	</macro>
 	<macro name="access">
 		<choose>
-			<if variable="URL">
+			<if variable="doi">
+				<text prefix="doi:" variable="doi"/>
+			</if>
+			<else-if match="all" variable="URL accessed">
 				<text prefix="URL: " variable="URL"/>
 				<group delimiter=" " prefix=" (" suffix=")">
 					<text form="long" suffix=":" term="accessed" text-case="lowercase"/>
@@ -213,7 +231,7 @@
 						<date-part name="year"/>
 					</date>
 				</group>
-			</if>
+			</else-if>
 		</choose>
 	</macro>
 	<macro name="additional">
@@ -256,7 +274,7 @@
 		<group delimiter=" ">
 			<group delimiter=" " suffix=".">
 				<choose>
-					<if match="none" type="webpage report">
+					<if match="none" type="report">
 						<text macro="author-first"/>
 					</if>
 				</choose>
