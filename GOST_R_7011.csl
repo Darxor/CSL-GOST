@@ -7,13 +7,13 @@
 			<name>Александр Севостьянов</name>
 			<email>alvslex@gmail.com</email>
 		</author>
-		<updated>2016-04-03T17:27:12+03:00</updated>
+		<updated>2016-04-07T16:26:51+03:00</updated>
 		<category citation-format="author-date"/>
 		<category field="generic-base"/>
 		<link href="http://protect.gost.ru/document.aspx?control=7&amp;id=179727" rel="documentation" xml:lang="ru"/>
 		<link href="http://chetvericov.ru/stil-oformleniya-dlya-mendeley-i-zotero-csl-po-gost-r-705-2008/" rel="template" xml:lang="ru"/>
-		<link href="https://raw.githubusercontent.com/Darxor/csl-gost-r-7.0.11/master/GOST_R_7011.csl" rel="self"/>
-		<id>https://raw.githubusercontent.com/Darxor/csl-gost-r-7.0.11/master/GOST_R_7011.csl</id>
+		<link href="https://raw.githubusercontent.com/Darxor/CSL-GOST/master/GOST_R_7011.csl" rel="self"/>
+		<id>https://raw.githubusercontent.com/Darxor/CSL-GOST/master/GOST_R_7011.csl</id>
 		<summary>Стиль CSL для создания библиографических ссылок согласно ГОСТ. Полная поддержка: Журнальных статей, материалов с конференций, книг, отчетов о НИР, диссертаций (авторефератов), электронных ресурсов (WEB)</summary>
 		<rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
 	</info>
@@ -297,17 +297,21 @@
 			<choose>
 				<if position="ibid">
 					<text form="short" term="ibid" text-case="capitalize-first"/>
-					<group prefix=",">
-						<label form="short" plural="never" prefix=" " variable="locator"/>
-						<text form="short" variable="locator"/>
+					<group delimiter=", " prefix=", ">
+						<group>
+							<label form="short" plural="never" prefix=" " variable="locator"/>
+							<text form="short" variable="locator"/>
+						</group>
 					</group>
 				</if>
 				<else>
-					<text macro="author-cite"/>
-					<text macro="year-date" prefix=", "/>
-					<group prefix=",">
-						<label form="short" plural="never" prefix=" " variable="locator"/>
-						<text form="short" variable="locator"/>
+					<group delimiter=", ">
+						<text macro="author-cite"/>
+						<text macro="year-date"/>
+						<group>
+							<label form="short" plural="never" prefix=" " variable="locator"/>
+							<text form="short" variable="locator"/>
+						</group>
 					</group>
 				</else>
 			</choose>
