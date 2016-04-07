@@ -29,7 +29,7 @@
 
 ## Гайд по файлам:
 ### ГОСТ Р 7.0.11 [Фамилия, год] Алфавитная сортировка
-#### [GOST_R_7011.csl](https://raw.githubusercontent.com/Darxor/csl-gost-r-7.0.11/master/GOST_R_7011.csl)
+#### [GOST_R_7011.csl](https://raw.githubusercontent.com/Darxor/CSL-GOST/master/GOST_R_7011.csl)
 Цитирование в формате [Фамилия, год], алфавитная сортировка (англоязычные материалы размещаются внизу списка)
 
 ```
@@ -41,7 +41,7 @@
 ```
 
 ### ГОСТ Р 7.0.11 [Номер] Алфавитная сортировка
-#### [GOST_R_7011_numeric.csl](https://raw.githubusercontent.com/Darxor/csl-gost-r-7.0.11/master/GOST_R_7011_numeric.csl)
+#### [GOST_R_7011_numeric.csl](https://raw.githubusercontent.com/Darxor/CSL-GOST/master/GOST_R_7011_numeric.csl)
 Цитирование в формате [Номер-цитаты], алфавитная сортировка (англоязычные материалы размещаются внизу списка)
 
 ```
@@ -53,10 +53,10 @@
 ```
 
 ### Образцы Zotero
-#### [Samples.rdf](https://raw.githubusercontent.com/Darxor/csl-gost-r-7.0.11/master/Samples.rdf)
+#### [Samples.rdf](https://raw.githubusercontent.com/Darxor/CSL-GOST/master/Samples.rdf)
 Образцы заполнения данных для Zotero.
 ##### Установка:
-1. Скачать [файл Samples.rdf](https://raw.githubusercontent.com/Darxor/csl-gost-r-7.0.11/master/Samples.rdf) (если у вас открывается текст — нажмите на ссылку правой кнопкой и выберите «Сохранить объект как…»)
+1. Скачать [файл Samples.rdf](https://raw.githubusercontent.com/Darxor/CSL-GOST/master/Samples.rdf) (если у вас открывается текст — нажмите на ссылку правой кнопкой и выберите «Сохранить объект как…»)
 2. В Zotero выберите Файл → Импортировать (File → Import) и откройте файл Samples.rdf
 3. Теперь в вашей библиотеке появится подборка «Samples» с образцами заполнения полей
 
