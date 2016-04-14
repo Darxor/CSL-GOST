@@ -7,7 +7,7 @@
 			<name>Александр Севостьянов</name>
 			<email>alvslex@gmail.com</email>
 		</author>
-		<updated>2016-04-07T16:26:51+03:00</updated>
+		<updated>2016-04-15T02:18:31+03:00</updated>
 		<category citation-format="author-date"/>
 		<category field="generic-base"/>
 		<link href="http://protect.gost.ru/document.aspx?control=7&amp;id=179727" rel="documentation" xml:lang="ru"/>
@@ -218,18 +218,20 @@
 	</macro>
 	<macro name="access">
 		<choose>
-			<if variable="doi">
-				<text prefix="doi:" variable="doi"/>
+			<if variable="DOI">
+				<text prefix="doi:" variable="DOI"/>
 			</if>
-			<else-if match="all" variable="URL accessed">
-				<text prefix="URL: " variable="URL"/>
-				<group delimiter=" " prefix=" (" suffix=")">
-					<text form="long" suffix=":" term="accessed" text-case="lowercase"/>
-					<date variable="accessed">
-						<date-part form="numeric-leading-zeros" name="day" suffix="."/>
-						<date-part form="numeric-leading-zeros" name="month" suffix="."/>
-						<date-part name="year"/>
-					</date>
+			<else-if variable="accessed">
+				<group>
+					<text prefix="URL: " variable="URL"/>
+					<group delimiter=" " prefix=" (" suffix=")">
+						<text form="long" suffix=":" term="accessed" text-case="lowercase"/>
+						<date variable="accessed">
+							<date-part form="numeric-leading-zeros" name="day" suffix="."/>
+							<date-part form="numeric-leading-zeros" name="month" suffix="."/>
+							<date-part name="year"/>
+						</date>
+					</group>
 				</group>
 			</else-if>
 		</choose>
