@@ -7,13 +7,13 @@
 			<name>Александр Севостьянов</name>
 			<email>alvslex@gmail.com</email>
 		</author>
-		<updated>2016-04-03T17:31:04+03:00</updated>
+		<updated>2016-04-15T02:18:31+03:00</updated>
 		<category citation-format="numeric"/>
 		<category field="generic-base"/>
 		<link href="http://protect.gost.ru/document.aspx?control=7&amp;id=179727" rel="documentation" xml:lang="ru"/>
 		<link href="http://chetvericov.ru/stil-oformleniya-dlya-mendeley-i-zotero-csl-po-gost-r-705-2008/" rel="template" xml:lang="ru"/>
-		<link href="https://raw.githubusercontent.com/Darxor/CSL-GOST/master/GOST_R_7011_numeric.csl" rel="self"/>
-		<id>https://raw.githubusercontent.com/Darxor/CSL-GOST/master/GOST_R_7011_numeric.csl</id>
+		<link href="https://raw.githubusercontent.com/Darxor/csl-gost-r-7.0.11/master/GOST_R_7011_numeric.csl" rel="self"/>
+		<id>https://raw.githubusercontent.com/Darxor/csl-gost-r-7.0.11/master/GOST_R_7011_numeric.csl</id>
 		<summary>Стиль CSL для создания библиографических ссылок согласно ГОСТ. Полная поддержка: Журнальных статей, материалов с конференций, книг, отчетов о НИР, диссертаций (авторефератов), электронных ресурсов (WEB)</summary>
 		<rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
 	</info>
@@ -218,18 +218,20 @@
 	</macro>
 	<macro name="access">
 		<choose>
-			<if variable="doi">
-				<text prefix="doi:" variable="doi"/>
+			<if variable="DOI">
+				<text prefix="doi:" variable="DOI"/>
 			</if>
-			<else-if match="all" variable="URL accessed">
-				<text prefix="URL: " variable="URL"/>
-				<group delimiter=" " prefix=" (" suffix=")">
-					<text form="long" suffix=":" term="accessed" text-case="lowercase"/>
-					<date variable="accessed">
-						<date-part form="numeric-leading-zeros" name="day" suffix="."/>
-						<date-part form="numeric-leading-zeros" name="month" suffix="."/>
-						<date-part name="year"/>
-					</date>
+			<else-if variable="accessed">
+				<group>
+					<text prefix="URL: " variable="URL"/>
+					<group delimiter=" " prefix=" (" suffix=")">
+						<text form="long" suffix=":" term="accessed" text-case="lowercase"/>
+						<date variable="accessed">
+							<date-part form="numeric-leading-zeros" name="day" suffix="."/>
+							<date-part form="numeric-leading-zeros" name="month" suffix="."/>
+							<date-part name="year"/>
+						</date>
+					</group>
 				</group>
 			</else-if>
 		</choose>
