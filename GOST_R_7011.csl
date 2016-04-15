@@ -7,7 +7,7 @@
 			<name>Александр Севостьянов</name>
 			<email>alvslex@gmail.com</email>
 		</author>
-		<updated>2016-04-15T20:55:11+03:00</updated>
+		<updated>2016-04-15T21:14:52+03:00</updated>
 		<category citation-format="author-date"/>
 		<category field="generic-base"/>
 		<link href="http://protect.gost.ru/document.aspx?control=7&amp;id=179727" rel="documentation" xml:lang="ru"/>
@@ -53,10 +53,6 @@
 				</names>
 			</else>
 		</choose>
-	</macro>
-	<macro name="author-cite">
-		<text macro="author-first"/>
-		<text variable="title"/>
 	</macro>
 	<macro name="title">
 		<text variable="title"/>
@@ -237,16 +233,9 @@
 			<text variable="collection-title"/>
 		</group>
 	</macro>
-	<!--
-			Sorts russian entries before any otheres (language is defined by wether or not "language" ("язык") field is filled in)
-			NB!: Do not fill it in for russian
-		-->
-	<macro name="language-sort">
-		<choose>
-			<if match="none" variable="language">
-				<text value="ZZZZZZZ"/>
-			</if>
-		</choose>
+<macro name="sort">
+		<text macro="author-first"/>
+		<text macro="title"/>
 	</macro>
 	<macro name="bibliography">
 		<group delimiter=" ">
