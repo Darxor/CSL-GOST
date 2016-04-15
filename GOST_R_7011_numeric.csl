@@ -7,7 +7,7 @@
 			<name>Александр Севостьянов</name>
 			<email>alvslex@gmail.com</email>
 		</author>
-		<updated>2016-04-15T20:55:20+03:00</updated>
+		<updated>2016-04-15T22:18:37+03:00</updated>
 		<category citation-format="numeric"/>
 		<category field="generic-base"/>
 		<link href="http://protect.gost.ru/document.aspx?control=7&amp;id=179727" rel="documentation" xml:lang="ru"/>
@@ -55,8 +55,36 @@
 		</choose>
 	</macro>
 	<macro name="author-cite">
-		<text macro="author-first"/>
-		<text variable="title"/>
+		<choose>
+			<if type="book">
+				<!-- dirty hack, that relies on recipient being false at all times... (which seems plausible for type=book) -->
+				<names variable="recipient">
+					<name delimiter=", " delimiter-precedes-last="always" et-al-min="1" et-al-use-first="0" form="short" name-as-sort-order="all" sort-separator=" "/>
+					<substitute>
+						<names variable="author">
+							<name delimiter=", " delimiter-precedes-last="always" et-al-min="2" et-al-use-first="1" form="short" name-as-sort-order="all" sort-separator=" " suppress-min="4"/>
+						</names>
+						<text form="short" variable="title"/>
+					</substitute>
+				</names>
+			</if>
+			<else>
+				<names variable="author">
+					<name delimiter=", " delimiter-precedes-last="always" et-al-min="2" et-al-use-first="1" form="short" name-as-sort-order="all" sort-separator=" "/>
+					<substitute>
+						<choose>
+							<if type="webpage">
+								<text variable="title"/>
+								<text variable="container-title"/>
+							</if>
+							<else>
+								<text form="short" variable="title"/>
+							</else>
+						</choose>
+					</substitute>
+				</names>
+			</else>
+		</choose>
 	</macro>
 	<macro name="title">
 		<text variable="title"/>
@@ -237,17 +265,6 @@
 			<text variable="collection-title"/>
 		</group>
 	</macro>
-	<!--
-			Sorts russian entries before any otheres (language is defined by wether or not "language" ("язык") field is filled in)
-			NB!: Do not fill it in for russian
-		-->
-	<macro name="language-sort">
-		<choose>
-			<if match="none" variable="language">
-				<text value="ZZZZZZZ"/>
-			</if>
-		</choose>
-	</macro>
 	<macro name="bibliography">
 		<group delimiter=" ">
 			<group delimiter=" " suffix=".">
@@ -281,7 +298,6 @@
 	</citation>
 	<bibliography second-field-align="flush">
 		<sort>
-			<!-- <key macro="language-sort"/>-->
 			<key macro="author-cite"/>
 			<key variable="issued"/>
 		</sort>

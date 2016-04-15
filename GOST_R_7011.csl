@@ -7,7 +7,7 @@
 			<name>Александр Севостьянов</name>
 			<email>alvslex@gmail.com</email>
 		</author>
-		<updated>2016-04-15T21:14:52+03:00</updated>
+		<updated>2016-04-15T22:16:31+03:00</updated>
 		<category citation-format="author-date"/>
 		<category field="generic-base"/>
 		<link href="http://protect.gost.ru/document.aspx?control=7&amp;id=179727" rel="documentation" xml:lang="ru"/>
@@ -50,6 +50,38 @@
 				<names variable="author">
 					<name delimiter=" " delimiter-precedes-last="always" et-al-min="2" et-al-use-first="1" initialize-with="." name-as-sort-order="all" sort-separator=", "/>
 					<label form="short" prefix=" " strip-periods="true" suffix="." text-case="lowercase"/>
+				</names>
+			</else>
+		</choose>
+	</macro>
+	<macro name="author-cite">
+		<choose>
+			<if type="book">
+				<!-- dirty hack, that relies on recipient being false at all times... (which seems plausible for type=book) -->
+				<names variable="recipient">
+					<name delimiter=", " delimiter-precedes-last="always" et-al-min="1" et-al-use-first="0" form="short" name-as-sort-order="all" sort-separator=" "/>
+					<substitute>
+						<names variable="author">
+							<name delimiter=", " delimiter-precedes-last="always" et-al-min="2" et-al-use-first="1" form="short" name-as-sort-order="all" sort-separator=" " suppress-min="4"/>
+						</names>
+						<text form="short" variable="title"/>
+					</substitute>
+				</names>
+			</if>
+			<else>
+				<names variable="author">
+					<name delimiter=", " delimiter-precedes-last="always" et-al-min="2" et-al-use-first="1" form="short" name-as-sort-order="all" sort-separator=" "/>
+					<substitute>
+						<choose>
+							<if type="webpage">
+								<text variable="title"/>
+								<text variable="container-title"/>
+							</if>
+							<else>
+								<text form="short" variable="title"/>
+							</else>
+						</choose>
+					</substitute>
 				</names>
 			</else>
 		</choose>
@@ -233,10 +265,6 @@
 			<text variable="collection-title"/>
 		</group>
 	</macro>
-<macro name="sort">
-		<text macro="author-first"/>
-		<text macro="title"/>
-	</macro>
 	<macro name="bibliography">
 		<group delimiter=" ">
 			<group delimiter=" " suffix=".">
@@ -286,7 +314,6 @@
 	</citation>
 	<bibliography second-field-align="flush">
 		<sort>
-			<!-- <key macro="language-sort"/>-->
 			<key macro="author-cite"/>
 			<key variable="issued"/>
 		</sort>
