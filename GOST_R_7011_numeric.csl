@@ -7,7 +7,7 @@
 			<name>Александр Севостьянов</name>
 			<email>alvslex@gmail.com</email>
 		</author>
-		<updated>2016-04-19T23:32:50+03:00</updated>
+		<updated>2016-04-19T23:41:03+03:00</updated>
 		<category citation-format="numeric"/>
 		<category field="generic-base"/>
 		<link href="http://protect.gost.ru/document.aspx?control=7&amp;id=179727" rel="documentation" xml:lang="ru"/>
@@ -262,12 +262,15 @@
 				<group delimiter=", " prefix=": ">
 					<text variable="collection-title"/>
 					<choose>
-						<if variable="collection-number">
+						<if is-numeric="collection-number">
 							<group delimiter=" ">
 								<text form="short" term="issue" text-case="lowercase"/>
 								<text variable="collection-number"/>
 							</group>
 						</if>
+						<else-if variable="collection-number">
+							<text variable="collection-number"/>
+						</else-if>
 					</choose>
 				</group>
 			</else>
@@ -292,7 +295,7 @@
 	</macro>
 	<macro name="language-sort">
 		<choose>
-			<if variable="language" match="none">
+			<if match="none" variable="language">
 				<text value="AAAAAAAAAA"/>
 			</if>
 		</choose>
