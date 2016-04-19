@@ -17,17 +17,7 @@
 		<summary>Стиль CSL для создания библиографических ссылок согласно ГОСТ. Полная поддержка: Журнальных статей, материалов с конференций, книг, отчетов о НИР, диссертаций (авторефератов), электронных ресурсов (WEB)</summary>
 		<rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
 	</info>
-	<locale xml:lang="ru">
-		<terms>
-			<term name="et-al"/>
-			<term form="symbol" name="issue">№</term>
-			<term name="accessed">дата обращения</term>
-			<term name="collection-title">серия</term>
-			<term form="short" name="number-of-volumes">т.</term>
-			<term form="short" name="thesis">дис.</term>
-		</terms>
-	</locale>
-	<locale xml:lang="en">
+	<locale>
 		<terms>
 			<term name="et-al"/>
 			<term form="symbol" name="issue">№</term>
@@ -36,6 +26,18 @@
 				<single>vol.</single>
 				<multiple>vols.</multiple>
 			</term>
+		</terms>
+		<term form="short" name="number-of-volumes">т.</term>
+		<term form="short" name="thesis">дис.</term>
+	</locale>
+	<locale xml:lang="ru">
+		<terms>
+			<term name="et-al"/>
+			<term form="symbol" name="issue">№</term>
+			<term name="accessed">дата обращения</term>
+			<term name="collection-title">серия</term>
+			<term form="short" name="number-of-volumes">т.</term>
+			<term form="short" name="thesis">дис.</term>
 		</terms>
 	</locale>
 	<macro name="author-first">
@@ -91,6 +93,7 @@
 		<text macro="genre" prefix=": "/>
 		<choose>
 			<if match="none" variable="container-title">
+				<text macro="collection-title"/>
 				<text macro="number-of-volumes"/>
 			</if>
 		</choose>
@@ -126,20 +129,26 @@
 			<name delimiter=", " initialize-with="."/>
 			<label form="short" prefix=", " text-case="capitalize-first"/>
 		</names>
-	</macro>
-	<macro name="container">
-		<group delimiter=": ">
-			<text variable="event"/>
-			<text form="long" variable="container-title"/>
-		</group>
 		<choose>
-			<if type="article article-magazine article-newspaper article-journal">
-				<text macro="collection-title" prefix=". "/>
+			<if match="none" variable="container-title event">
+				<text macro="container-contributors" prefix="; "/>
 			</if>
 		</choose>
+	</macro>
+	<macro name="container">
 		<choose>
-			<if variable="container-title">
-				<text macro="number-of-volumes"/>
+			<if match="any" variable="container-title event">
+				<group delimiter=": ">
+					<text variable="event"/>
+					<text form="long" variable="container-title"/>
+				</group>
+				<choose>
+					<if variable="container-title">
+						<text macro="collection-title"/>
+						<text macro="number-of-volumes"/>
+					</if>
+				</choose>
+				<text macro="container-contributors" prefix=" / "/>
 			</if>
 		</choose>
 	</macro>
@@ -153,15 +162,14 @@
 	<macro name="container-contributors">
 		<group delimiter="; ">
 			<names delimiter=", " variable="container-author">
-				<label form="verb-short" suffix=" " text-case="title"/>
 				<name delimiter=", " initialize-with="." sort-separator=", "/>
 			</names>
 			<names delimiter=", " variable="editor">
-				<label form="verb-short" suffix=" " text-case="title"/>
+				<label form="verb-short" suffix=" " text-case="lowercase"/>
 				<name delimiter=", " initialize-with="." sort-separator=", "/>
 			</names>
 			<names delimiter=", " variable="translator">
-				<label form="verb-short" suffix=" " text-case="title"/>
+				<label form="verb-short" suffix=" " text-case="lowercase"/>
 				<name delimiter=", " initialize-with="." sort-separator=", "/>
 			</names>
 		</group>
@@ -240,10 +248,18 @@
 			</else-if>
 		</choose>
 	</macro>
-	<macro name="additional">
+	<macro name="collection-title">
 		<choose>
-			<if type="book">
+			<if type="article article-magazine article-newspaper article-journal">
+				<label prefix=". " suffix=": " text-case="capitalize-first" variable="collection-title"/>
 				<group delimiter=", ">
+					<!-- Zotero is glitchy as of March 2016, and puts both "collection number" and "collection title" to collection-title variable, with second overwriting the first -->
+					<text variable="collection-number"/>
+					<text variable="collection-title"/>
+				</group>
+			</if>
+			<else>
+				<group delimiter=", " prefix=": ">
 					<text variable="collection-title"/>
 					<choose>
 						<if variable="collection-number">
@@ -254,16 +270,8 @@
 						</if>
 					</choose>
 				</group>
-			</if>
+			</else>
 		</choose>
-	</macro>
-	<macro name="collection-title">
-		<label suffix=": " text-case="capitalize-first" variable="collection-title"/>
-		<group delimiter=", ">
-			<!-- Zotero is glitchy as of March 2016, and puts both "collection number" and "collection title" to collection-title variable, with second overwriting the first -->
-			<text variable="collection-number"/>
-			<text variable="collection-title"/>
-		</group>
 	</macro>
 	<macro name="bibliography">
 		<group delimiter=" ">
@@ -275,14 +283,19 @@
 				</choose>
 				<text macro="title"/>
 				<text macro="authors-all" prefix="/ "/>
-				<text macro="container" prefix=" // " suffix="."/>
-				<text macro="container-contributors" prefix="/ "/>
+				<text macro="container" prefix=" // "/>
 			</group>
 			<text macro="publishing" prefix="– " suffix="."/>
 			<text macro="imprint" prefix="– "/>
 			<text macro="access" prefix="– "/>
-			<text macro="additional" prefix="– (" suffix=")"/>
 		</group>
+	</macro>
+	<macro name="language-sort">
+		<choose>
+			<if variable="language">
+				<text value="ZZZZZZZZZ"/>
+			</if>
+		</choose>
 	</macro>
 	<citation disambiguate-add-year-suffix="true" et-al-min="2" et-al-use-first="1">
 		<sort>
@@ -314,6 +327,7 @@
 	</citation>
 	<bibliography second-field-align="flush">
 		<sort>
+			<key macro="language-sort"/>
 			<key macro="author-cite"/>
 			<key variable="issued"/>
 		</sort>
