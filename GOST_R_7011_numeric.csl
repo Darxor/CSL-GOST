@@ -7,7 +7,7 @@
 			<name>Александр Севостьянов</name>
 			<email>alvslex@gmail.com</email>
 		</author>
-		<updated>2016-04-20T00:00:40+03:00</updated>
+		<updated>2017-03-03T00:36:00+03:00</updated>
 		<category citation-format="numeric"/>
 		<category field="generic-base"/>
 		<link href="http://protect.gost.ru/document.aspx?control=7&amp;id=179727" rel="documentation" xml:lang="ru"/>
@@ -321,15 +321,15 @@
 			<key variable="issued"/>
 		</sort>
 		<layout locale="ru" suffix=".">
-			<text suffix="." variable="citation-number"/>
+			<text suffix=". " variable="citation-number"/>
 			<text macro="bibliography"/>
 		</layout>
 		<layout locale="en de es fr it" suffix=".">
-			<text suffix="." variable="citation-number"/>
+			<text suffix=". " variable="citation-number"/>
 			<text macro="bibliography"/>
 		</layout>
 		<layout suffix=".">
-			<text suffix="." variable="citation-number"/>
+			<text suffix=". " variable="citation-number"/>
 			<text macro="bibliography"/>
 		</layout>
 	</bibliography>
