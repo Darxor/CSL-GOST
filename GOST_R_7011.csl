@@ -7,7 +7,7 @@
 			<name>Александр Севостьянов</name>
 			<email>alvslex@gmail.com</email>
 		</author>
-		<updated>2017-03-03T00:36:00+03:00</updated>
+		<updated>2017-03-17T00:51:40+03:00</updated>
 		<category citation-format="author-date"/>
 		<category field="generic-base"/>
 		<link href="http://protect.gost.ru/document.aspx?control=7&amp;id=179727" rel="documentation" xml:lang="ru"/>
@@ -99,10 +99,10 @@
 		</choose>
 		<choose>
 			<if type="webpage">
-				<text value=" [Электронный ресурс]. "/>
+				<text value=" [Электронный ресурс] "/>
 			</if>
 			<else-if match="all" variable="URL accessed">
-				<text value=" [Электронный ресурс]. "/>
+				<text value=" [Электронный ресурс] "/>
 			</else-if>
 		</choose>
 	</macro>
@@ -190,7 +190,7 @@
 		</choose>
 		<choose>
 			<if match="any" variable="publisher publisher-place">
-				<group delimiter=": ">
+				<group delimiter=":&#160;">
 					<text form="short" variable="publisher-place"/>
 					<choose>
 						<if match="none" type="thesis">
@@ -212,19 +212,19 @@
 	</macro>
 	<macro name="imprint">
 		<group delimiter=" – ">
-			<group delimiter=" ">
+			<group delimiter="&#160;">
 				<label form="short" plural="never" text-case="capitalize-first" variable="volume"/>
 				<text variable="volume"/>
 			</group>
-			<group delimiter=" ">
+			<group delimiter="&#160;">
 				<label form="symbol" plural="never" text-case="capitalize-first" variable="issue"/>
 				<text variable="issue"/>
 			</group>
-			<group delimiter=" ">
+			<group delimiter="&#160;">
 				<label form="short" plural="never" text-case="capitalize-first" variable="page"/>
 				<text variable="page"/>
 			</group>
-			<group delimiter=" ">
+			<group delimiter="&#160;">
 				<text variable="number-of-pages"/>
 				<label form="short" plural="never" text-case="lowercase" variable="number-of-pages"/>
 			</group>
@@ -295,13 +295,6 @@
 			<text macro="access" prefix="– "/>
 		</group>
 	</macro>
-	<macro name="language-sort">
-		<choose>
-			<if match="none" variable="language">
-				<text value="AAAAAAAAAA"/>
-			</if>
-		</choose>
-	</macro>
 	<citation disambiguate-add-year-suffix="true" et-al-min="2" et-al-use-first="1">
 		<sort>
 			<key variable="citation-number"/>
@@ -332,7 +325,6 @@
 	</citation>
 	<bibliography second-field-align="flush">
 		<sort>
-			<key macro="language-sort"/>
 			<key macro="author-cite"/>
 			<key variable="issued"/>
 		</sort>
